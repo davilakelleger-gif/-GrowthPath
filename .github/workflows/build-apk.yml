@@ -10,13 +10,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: 3.29.0
+
+      - run: |
+          cd /tmp
+          flutter create --project-name growthpath_temp --platforms android temp_app
+          cp -r /tmp/temp_app/android/gradle $GITHUB_WORKSPACE/flutter_app/android/
+          cp /tmp/temp_app/android/gradlew $GITHUB_WORKSPACE/flutter_app/android/
+          cp /tmp/temp_app/android/gradlew.bat $GITHUB_WORKSPACE/flutter_app/android/
+          cp /tmp/temp_app/android/app/build.gradle $GITHUB_WORKSPACE/flutter_app/android/app/
+
+      - run: yes | flutter doctor --android-licenses
+
       - run: flutter pub get
         working-directory: flutter_app
+
       - run: flutter build apk --release
         working-directory: flutter_app
+
       - uses: actions/upload-artifact@v4
         with:
           name: growthpath-apk
