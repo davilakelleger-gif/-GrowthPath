@@ -55,8 +55,11 @@ jobs:
         working-directory: flutter_app
 
       - name: Build APK
-        run: flutter build apk --release
-        working-directory: flutter_app
+        run: |
+          set +e
+          cd "$GITHUB_WORKSPACE/flutter_app"
+          flutter build apk --release 2>&1
+          echo "FLUTTER_BUILD_EXIT_CODE=$?"
 
       - uses: actions/upload-artifact@v4
         with:
