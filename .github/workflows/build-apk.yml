@@ -18,21 +18,20 @@ jobs:
 
       - name: Generate Android scaffolding
         run: |
-          cd /tmp
-          flutter create --project-name growthpath_temp --platforms android temp_app
-          cd "$GITHUB_WORKSPACE/flutter_app"
-          # Copy gradle wrapper (scripts + jar)
-          mkdir -p android/app/src/main
-          cp -v /tmp/temp_app/android/gradlew android/
-          cp -v /tmp/temp_app/android/gradlew.bat android/
-          cp -rv /tmp/temp_app/android/gradle android/
-          cp -v /tmp/temp_app/android/app/build.gradle android/app/
-          cp -v /tmp/temp_app/android/app/src/main/AndroidManifest.xml android/app/src/main/
-          # Ensure executable
-          chmod +x android/gradlew
+          set -eux  # fail-fast, verbose
+          TEMP_PROJECT=/tmp/growthpath_temp_app
+          FLUTTER_DIR="$GITHUB_WORKSPACE/flutter_app"
+          flutter create --project-name growthpath_temp --platforms android "$TEMP_PROJECT"
+          # Remove and re-create android scaffold entirely
+          rm -rf "$FLUTTER_DIR/android"
+          mkdir -p "$FLUTTER_DIR/android/app/src/main"
+          # Copy everything from the template project's android/
+          cp -av "$TEMP_PROJECT/android/" "$FLUTTER_DIR/android/"
+          cd "$FLUTTER_DIR"
           # Fix package name
           sed -i 's/com\.example\.growthpath_temp/com.growthpath.app/g' android/app/build.gradle
           sed -i 's/com\.example\.growthpath_temp/com.growthpath.app/g' android/app/src/main/AndroidManifest.xml
+          chmod +x android/gradlew
 
       - name: Accept licenses
         run: yes | flutter doctor --android-licenses
