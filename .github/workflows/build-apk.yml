@@ -1,0 +1,23 @@
+name: Build APK
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.29.0
+      - run: flutter pub get
+        working-directory: flutter_app
+      - run: flutter build apk --release
+        working-directory: flutter_app
+      - uses: actions/upload-artifact@v4
+        with:
+          name: growthpath-apk
+          path: flutter_app/build/app/outputs/flutter-apk/*.apk

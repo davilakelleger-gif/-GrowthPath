@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GrowthPath - Track your habits, reach your goals, and become your best version with a premium growth tracking experience.">
+  <meta name="theme-color" content="#2563EB">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.svg">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+  <link rel="stylesheet" href="css/design-system.css">
+  <link rel="stylesheet" href="css/style.css">
+  <title data-i18n="app_name">GrowthPath — Track. Grow. Succeed.</title>
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="/" class="navbar-logo">
+        <div class="logo-icon">G</div>
+        GrowthPath
+      </a>
+      <ul class="navbar-links">
+        <li><a href="#features" data-i18n="features">Features</a></li>
+        <li><a href="#how-it-works" data-i18n="how_works">How It Works</a></li>
+        <li><a href="#testimonials" data-i18n="testimonials">Testimonials</a></li>
+        <li><a href="#download" data-i18n="download">Download</a></li>
+      </ul>
+      <div class="navbar-actions">
+        <button class="btn btn-sm" style="background:var(--primary-bg);color:var(--primary);border:none;border-radius:var(--radius-sm);height:36px;padding:0 12px;cursor:pointer;font-family:var(--font);font-weight:500" onclick="setLang(currentLang === 'en' ? 'es' : 'en')">
+          <span class="material-symbols-rounded" style="font-size:18px">translate</span>
+          <span id="langToggle">EN</span>
+        </button>
+        <a href="dashboard/" class="btn btn-ghost" data-i18n="login">Login</a>
+        <a href="dashboard/" class="btn btn-primary btn-sm" data-i18n="get_started">Get Started</a>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-content">
+        <span class="badge badge-primary animate-fade-up" data-i18n="hero_badge">Your Growth Journey Starts Here</span>
+        <h1 class="hero-title animate-fade-up" style="animation-delay:0.1s">
+          GrowthPath.<br>
+          <span class="gradient-text" data-i18n="hero_title_line2">Track. Grow. Succeed.</span>
+        </h1>
+        <p class="hero-subtitle animate-fade-up" style="animation-delay:0.2s" data-i18n="hero_desc">
+          Create better habits. Reach your goals. Become your best version with the most elegant growth tracking experience.
+        </p>
+        <div class="hero-buttons animate-fade-up" style="animation-delay:0.3s">
+          <button class="btn btn-primary btn-lg install-btn">
+            <span class="material-symbols-rounded">download</span>
+            <span data-i18n="download_apk">Download APK</span>
+          </button>
+          <button class="btn btn-secondary btn-lg" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">
+            <span data-i18n="learn_more">Learn More</span>
+            <span class="material-symbols-rounded">arrow_forward</span>
+          </button>
+        </div>
+      </div>
+      <div class="hero-mockup animate-float">
+        <div class="mockup-phone">
+          <div class="mockup-notch"></div>
+          <div class="mockup-screen">
+            <div class="mockup-header">
+              <div class="mockup-greeting">
+                <span>Hello Kelleger 👋</span>
+                <small data-i18n="keep_growing">Keep Growing Today</small>
+              </div>
+              <div class="mockup-avatar">K</div>
+            </div>
+            <div class="mockup-stats-row">
+              <div class="mockup-stat">
+                <div class="mockup-circle-progress"><svg viewBox="0 0 36 36"><path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#E2E8F0" stroke-width="3"/><path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#2563EB" stroke-width="3" stroke-dasharray="75, 100"/></svg><span class="mockup-circle-text">75%</span></div>
+                <small data-i18n="habits_done">Habits</small>
+              </div>
+              <div class="mockup-stat">
+                <div class="mockup-circle-progress"><svg viewBox="0 0 36 36"><path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#E2E8F0" stroke-width="3"/><path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#22C55E" stroke-width="3" stroke-dasharray="60, 100"/></svg><span class="mockup-circle-text">60%</span></div>
+                <small data-i18n="goals_title">Goals</small>
+              </div>
+              <div class="mockup-stat">
+                <div class="mockup-circle-progress"><svg viewBox="0 0 36 36"><path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#E2E8F0" stroke-width="3"/><path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#F59E0B" stroke-width="3" stroke-dasharray="90, 100"/></svg><span class="mockup-circle-text">90%</span></div>
+                <small data-i18n="day_streak">Streak</small>
+              </div>
+            </div>
+            <div class="mockup-habits">
+              <div class="mockup-habit-item"><span>💧 <span data-i18n="drink_water">Drink Water</span></span><div class="progress-bar"><div class="progress-fill" style="width:75%"></div></div><small>6 / 8</small></div>
+              <div class="mockup-habit-item"><span>📚 <span data-i18n="read">Read</span></span><div class="progress-bar"><div class="progress-fill success" style="width:50%"></div></div><small>25 / 50</small></div>
+              <div class="mockup-habit-item"><span>🏃 <span data-i18n="running">Run</span></span><div class="progress-bar"><div class="progress-fill warning" style="width:30%"></div></div><small>3 / 10</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="features">
+    <div class="container">
+      <h2 class="section-title" data-i18n="feat_title">Everything you need to grow</h2>
+      <p class="section-subtitle" data-i18n="feat_subtitle">Powerful tools to track habits, achieve goals, and visualize your progress in one beautiful experience.</p>
+      <div class="grid-4 stagger-children">
+        <div class="card feature-card">
+          <div class="icon-circle primary"><span class="material-symbols-rounded">trackpad_rounded</span></div>
+          <h3 class="mt-16" data-i18n="feat_goals">Goals</h3>
+          <p class="mt-8" data-i18n="feat_goals_desc">Set ambitious goals and track every milestone with intelligent progress tracking.</p>
+        </div>
+        <div class="card feature-card">
+          <div class="icon-circle success"><span class="material-symbols-rounded">local_fire_department</span></div>
+          <h3 class="mt-16" data-i18n="feat_habits">Habits</h3>
+          <p class="mt-8" data-i18n="feat_habits_desc">Build lasting habits with daily tracking, streaks, and smart reminders.</p>
+        </div>
+        <div class="card feature-card">
+          <div class="icon-circle warning"><span class="material-symbols-rounded">bar_chart</span></div>
+          <h3 class="mt-16" data-i18n="feat_stats">Statistics</h3>
+          <p class="mt-8" data-i18n="feat_stats_desc">Beautiful charts and insights that show your growth journey over time.</p>
+        </div>
+        <div class="card feature-card">
+          <div class="icon-circle" style="background:rgba(139,92,246,0.1);color:#8B5CF6"><span class="material-symbols-rounded">emoji_events</span></div>
+          <h3 class="mt-16" data-i18n="feat_achievements">Achievements</h3>
+          <p class="mt-8" data-i18n="feat_achievements_desc">Unlock achievements and celebrate milestones as you level up your life.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="how-it-works" style="background:var(--primary-bg)">
+    <div class="container">
+      <h2 class="section-title" data-i18n="how_title">How it works</h2>
+      <p class="section-subtitle" data-i18n="how_subtitle">Three simple steps to transform your daily routine and achieve your goals.</p>
+      <div class="grid-3 steps-grid stagger-children">
+        <div class="card step-card text-center card-static">
+          <div class="step-number">1</div>
+          <div class="icon-circle primary" style="margin:0 auto"><span class="material-symbols-rounded">flag</span></div>
+          <h3 class="mt-16" data-i18n="how_step1">Create Goals</h3>
+          <p class="mt-8" data-i18n="how_step1_desc">Define your objectives with specific targets and deadlines that matter to you.</p>
+        </div>
+        <div class="card step-card text-center card-static">
+          <div class="step-number">2</div>
+          <div class="icon-circle success" style="margin:0 auto"><span class="material-symbols-rounded">checklist</span></div>
+          <h3 class="mt-16" data-i18n="how_step2">Track Habits</h3>
+          <p class="mt-8" data-i18n="how_step2_desc">Log your daily activities and build momentum with consistent small actions.</p>
+        </div>
+        <div class="card step-card text-center card-static">
+          <div class="step-number">3</div>
+          <div class="icon-circle warning" style="margin:0 auto"><span class="material-symbols-rounded">trending_up</span></div>
+          <h3 class="mt-16" data-i18n="how_step3">See Progress</h3>
+          <p class="mt-8" data-i18n="how_step3_desc">Watch your improvement with detailed analytics and motivating insights.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="preview">
+    <div class="container">
+      <h2 class="section-title" data-i18n="preview_title">Beautiful dashboard</h2>
+      <p class="section-subtitle" data-i18n="preview_subtitle">Your command center for personal growth with real-time insights at a glance.</p>
+      <div class="preview-card card">
+        <div class="preview-dashboard">
+          <div class="preview-sidebar">
+            <div class="preview-logo">G</div>
+            <nav class="preview-nav">
+              <span class="material-symbols-rounded active">home</span>
+              <span class="material-symbols-rounded">check_circle</span>
+              <span class="material-symbols-rounded">flag</span>
+              <span class="material-symbols-rounded">bar_chart</span>
+              <span class="material-symbols-rounded">person</span>
+            </nav>
+          </div>
+          <div class="preview-main">
+            <div class="preview-main-header">
+              <div><h3 data-i18n="statistics">Overview</h3><small data-i18n="keep_growing">Your growth summary</small></div>
+              <div class="preview-date">June 2026</div>
+            </div>
+            <div class="preview-cards">
+              <div class="preview-data-card"><span class="material-symbols-rounded primary">local_fire_department</span><div><strong>12</strong><small data-i18n="day_streak">Day Streak</small></div></div>
+              <div class="preview-data-card"><span class="material-symbols-rounded success">check_circle</span><div><strong>83%</strong><small data-i18n="habits_done">Habits</small></div></div>
+              <div class="preview-data-card"><span class="material-symbols-rounded warning">flag</span><div><strong>4</strong><small data-i18n="goals_title">Goals</small></div></div>
+              <div class="preview-data-card"><span class="material-symbols-rounded" style="color:#8B5CF6">emoji_events</span><div><strong>7</strong><small data-i18n="achievements_title">Achievements</small></div></div>
+            </div>
+            <div class="preview-chart">
+              <div class="preview-chart-header"><span data-i18n="weekly">Weekly Progress</span><small>+12% vs last week</small></div>
+              <div class="preview-bars">
+                <div><div class="bar" style="height:40%"></div><small>Mon</small></div>
+                <div><div class="bar" style="height:65%"></div><small>Tue</small></div>
+                <div><div class="bar" style="height:45%"></div><small>Wed</small></div>
+                <div><div class="bar" style="height:80%"></div><small>Thu</small></div>
+                <div><div class="bar" style="height:55%"></div><small>Fri</small></div>
+                <div><div class="bar" style="height:90%"></div><small>Sat</small></div>
+                <div><div class="bar" style="height:70%"></div><small>Sun</small></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="testimonials" style="background:var(--primary-bg)">
+    <div class="container">
+      <h2 class="section-title" data-i18n="test_title">What our users say</h2>
+      <p class="section-subtitle" data-i18n="test_subtitle">Join thousands of people who have transformed their lives with GrowthPath.</p>
+      <div class="grid-3 stagger-children">
+        <div class="card testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="mt-12">"GrowthPath completely changed how I approach my daily habits. The interface is gorgeous and the streak system keeps me motivated."</p>
+          <div class="testimonial-author mt-16"><div class="avatar avatar-sm">S</div><div><span class="font-medium">Sarah Chen</span><small class="text-secondary">Product Designer</small></div></div>
+        </div>
+        <div class="card testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="mt-12">"I've tried dozens of habit trackers and GrowthPath is by far the most polished. The statistics view is incredibly insightful."</p>
+          <div class="testimonial-author mt-16"><div class="avatar avatar-sm">M</div><div><span class="font-medium">Marcus Johnson</span><small class="text-secondary">Software Engineer</small></div></div>
+        </div>
+        <div class="card testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="mt-12">"The achievements system gamifies self-improvement perfectly. I've never been this consistent with my goals before."</p>
+          <div class="testimonial-author mt-16"><div class="avatar avatar-sm">E</div><div><span class="font-medium">Emma Williams</span><small class="text-secondary">Entrepreneur</small></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="download">
+    <div class="container">
+      <div class="card download-card text-center">
+        <div class="logo-icon download-logo">G</div>
+        <h2 class="mt-16" data-i18n="dl_title">Start your growth journey</h2>
+        <p class="section-subtitle" style="margin-bottom:24px" data-i18n="dl_desc">Download GrowthPath APK and take the first step toward becoming your best version.</p>
+        <div class="flex justify-center gap-16 flex-wrap">
+          <button class="btn btn-primary btn-lg install-btn">
+            <span class="material-symbols-rounded">download</span>
+            <span data-i18n="download_apk">Download APK</span>
+          </button>
+          <button class="btn btn-secondary btn-lg" onclick="window.open('https://github.com', '_blank')">
+            <span class="material-symbols-rounded">code</span>
+            <span data-i18n="view_github">View on GitHub</span>
+          </button>
+        </div>
+        <p class="mt-16 text-secondary" style="font-size:0.813rem" data-i18n="version">Version 1.0.0 — 15 MB — Android 8.0+</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="navbar-logo"><div class="logo-icon">G</div>GrowthPath</a>
+          <p class="mt-8" data-i18n="tagline">Track your habits. Reach your goals. Become your best version.</p>
+        </div>
+        <div class="footer-links">
+          <h5 data-i18n="product">Product</h5>
+          <a href="#features" data-i18n="features">Features</a>
+          <a href="#how-it-works" data-i18n="how_works">How It Works</a>
+          <a href="#download" data-i18n="download">Download</a>
+        </div>
+        <div class="footer-links">
+          <h5 data-i18n="company">Company</h5>
+          <a href="#" data-i18n="about">About</a>
+          <a href="#" data-i18n="blog">Blog</a>
+          <a href="#" data-i18n="contact">Contact</a>
+        </div>
+        <div class="footer-links">
+          <h5 data-i18n="legal">Legal</h5>
+          <a href="#" data-i18n="privacy">Privacy Policy</a>
+          <a href="#" data-i18n="terms">Terms of Service</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 GrowthPath. <span data-i18n="rights">All rights reserved.</span></span>
+        <div class="footer-social">
+          <a href="#" class="material-symbols-rounded" title="GitHub">code</a>
+          <a href="#" class="material-symbols-rounded" title="Twitter">stadia_controller</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
