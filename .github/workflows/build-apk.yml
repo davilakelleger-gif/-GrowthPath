@@ -18,34 +18,16 @@ jobs:
 
       - name: Generate Android scaffolding
         run: |
-          set -x  # verbose, but don't fail on first error
+          set -eux
           PROJECT_DIR="$GITHUB_WORKSPACE/flutter_app"
-          # Create a temp flutter project with android support
           cd /tmp
-          flutter create --project-name growthpath_temp --platforms android temp_app 2>&1 || echo "FLUTTER_CREATE_EXIT_CODE=$?"
-          # Show what was created
-          echo "=== Contents of temp_app ==="
-          ls -la /tmp/temp_app/android/ 2>&1 || echo "android dir missing"
-          ls -la /tmp/temp_app/android/app/ 2>&1 || echo "app dir missing"
-          ls -la /tmp/temp_app/android/gradle/ 2>&1 || echo "gradle dir missing"
-          ls -la /tmp/temp_app/android/app/src/main/ 2>&1 || echo "main src missing"
-          # Copy the android scaffolding
-          mkdir -p "$PROJECT_DIR/android/app/src/main"
-          cp -v /tmp/temp_app/android/gradlew "$PROJECT_DIR/android/" 2>&1 || echo "CP_FAIL: gradlew"
-          cp -v /tmp/temp_app/android/gradlew.bat "$PROJECT_DIR/android/" 2>&1 || echo "CP_FAIL: gradlew.bat"
-          cp -rv /tmp/temp_app/android/gradle "$PROJECT_DIR/android/" 2>&1 || echo "CP_FAIL: gradle"
-          cp -v /tmp/temp_app/android/app/build.gradle "$PROJECT_DIR/android/app/" 2>&1 || echo "CP_FAIL: build.gradle"
-          cp -v /tmp/temp_app/android/app/src/main/AndroidManifest.xml "$PROJECT_DIR/android/app/src/main/" 2>&1 || echo "CP_FAIL: manifest"
-          cp -v /tmp/temp_app/android/settings.gradle "$PROJECT_DIR/android/" 2>&1 || echo "CP_FAIL: settings"
-          cp -v /tmp/temp_app/android/build.gradle "$PROJECT_DIR/android/" 2>&1 || echo "CP_FAIL: root build.gradle"
-          cp -v /tmp/temp_app/android/gradle.properties "$PROJECT_DIR/android/" 2>&1 || echo "CP_FAIL: gradle.properties"
+          flutter create --project-name growthpath_temp --platforms android temp_app
+          rm -rf "$PROJECT_DIR/android"
+          cp -r /tmp/temp_app/android "$PROJECT_DIR/"
           cd "$PROJECT_DIR"
-          # Fix package name
           sed -i 's/com\.example\.growthpath_temp/com.growthpath.app/g' android/app/build.gradle
           sed -i 's/com\.example\.growthpath_temp/com.growthpath.app/g' android/app/src/main/AndroidManifest.xml
           chmod +x android/gradlew
-          echo "=== Final android dir ==="
-          find android -type f | head -30
 
       - name: Accept licenses
         run: yes | flutter doctor --android-licenses
@@ -55,18 +37,8 @@ jobs:
         working-directory: flutter_app
 
       - name: Build APK
-        run: |
-          cd "$GITHUB_WORKSPACE/flutter_app"
-          flutter build apk --release 2>&1 | tee /tmp/build.log
-          exit_code=${PIPESTATUS[0]}
-          echo "FLUTTER_BUILD_EXIT_CODE=$exit_code"
-          echo "=== LAST 50 LINES OF BUILD LOG ==="
-          tail -50 /tmp/build.log
-          if [ $exit_code -ne 0 ]; then
-            echo "Build failed, checking for errors..."
-            grep -i "error\|Error\|FAILED\|Exception" /tmp/build.log | head -20
-            exit 1
-          fi
+        run: flutter build apk --release
+        working-directory: flutter_app
 
       - uses: actions/upload-artifact@v4
         with:
