@@ -104,16 +104,17 @@ class AchievementsScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final a = achievements[index];
                   final unlocked = a['unlocked'] as bool;
-                  return Container(
-                    padding: const EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).cardColor,
-                      borderRadius: BorderRadius.circular(18),
-                      border: Border.all(
-                        color: AppColors.border.withOpacity(0.5),
+                  return Opacity(
+                    opacity: unlocked ? 1.0 : 0.5,
+                    child: Container(
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).cardColor,
+                        borderRadius: BorderRadius.circular(18),
+                        border: Border.all(
+                          color: AppColors.border.withOpacity(0.5),
+                        ),
                       ),
-                      opacity: unlocked ? 1 : 0.5,
-                    ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -146,7 +147,8 @@ class AchievementsScreen extends StatelessWidget {
                           ),
                       ],
                     ),
-                  );
+                  ),
+                );
                 },
               ),
             ),
